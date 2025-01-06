@@ -5,7 +5,13 @@ fetch("https://api.giphy.com/v1/gifs/random?api_key=QF1MqCKevJsJwUSyLOL7rpnCV4OJ
     // Sends an HTTP GET request to the Giphy API's random GIF endpoint, 
 
     .then(function (response) {
-        return response.json();
+        if (response.status == 200){
+            return response.json(); 
+        }
+        else {
+            alert("Problem");
+            console.log("Problem")
+        }
     })
     // Handles the response from the API, calling the `json()` method to parse the JSON data from the response.
 
@@ -44,3 +50,8 @@ fetch("https://api.giphy.com/v1/gifs/random?api_key=QF1MqCKevJsJwUSyLOL7rpnCV4OJ
 // 1. The API call is made.
 // 2. The response is parsed as JSON.
 // 3. The extracted data is processed and added to the webpage dynamically.
+
+
+.catch(function(error){
+    console.log("There is a problem", error);
+})
